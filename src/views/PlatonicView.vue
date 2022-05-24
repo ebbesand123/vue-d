@@ -14,7 +14,6 @@ h1 {
   text-align: center;
 }
 #tv {
-  position: absolute;
   height: 100%;
   width: 100%;
 }
