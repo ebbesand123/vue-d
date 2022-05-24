@@ -11,7 +11,7 @@ import {
 
 import { onMounted } from "vue";
 
-function init(): void {
+function init() {
   const container = document.getElementById("canvas");
   if (container === null) {
     throw new Error("InitFailureExcepetion");
