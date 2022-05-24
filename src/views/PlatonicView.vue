@@ -5,15 +5,16 @@ import PlatonicScene from "@/components/PlatonicScene.vue";
 <template>
   <h1>Platonic</h1>
   <div id="tv">
-    <PlatonicScene />
+    <platonic-scene />
   </div>
 </template>
 
-<style scoped>
+<style>
 h1 {
   text-align: center;
 }
 #tv {
+  position: absolute;
   height: 100%;
   width: 100%;
 }

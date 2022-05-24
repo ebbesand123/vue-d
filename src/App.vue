@@ -4,17 +4,14 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <nav>
-        <RouterLink to="/">
-          Home
-        </RouterLink>
-        <RouterLink to="/platonic">
-          Platonische Körper
-        </RouterLink>
-      </nav>
-    </div>
+    <nav>
+      <RouterLink to="/">
+        Home
+      </RouterLink>
+      <RouterLink to="/platonic">
+        Platonische Körper
+      </RouterLink>
+    </nav>
   </header>
 
   <RouterView />
