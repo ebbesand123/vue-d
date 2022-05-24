@@ -3,7 +3,7 @@ import PlatonicScene from "@/components/PlatonicScene.vue";
 </script>
 
 <template>
-  <h1>Platonische Körper</h1>
+  <h1>Platonic</h1>
   <div id="tv">
     <PlatonicScene />
   </div>

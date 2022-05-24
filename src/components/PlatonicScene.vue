@@ -57,7 +57,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="canvas"></div>
+  <div id="canvas" />
 </template>
 
 <style>
