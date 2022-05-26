@@ -35,7 +35,7 @@ const props = defineProps({
     default: {
       x: 0,
       y: 0,
-      z: 1
+      z: 10
     }
   }
 })
