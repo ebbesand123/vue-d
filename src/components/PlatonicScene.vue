@@ -1,5 +1,8 @@
+<template>
+  <div id="canvas" />
+</template>
 <script setup lang="ts">
-
+import { onMounted } from "vue";
 import {
   BoxBufferGeometry,
   Color,
@@ -10,31 +13,30 @@ import {
   WebGLRenderer,
 } from "three";
 
-import { onMounted } from "vue";
-
-export interface CameraPosition {
-  x: number
-  y: number
-  z: number
-}
-
-export interface PlatonicScene {
-  backgroundColor: string
-  fov: number
-  far: number
-  near: number
-  cameraPos: CameraPosition
-}
-
-const props = withDefaults(defineProps<PlatonicScene>(), {
-  backgroundColor: "black",
-  fov: 35,
-  far: 100,
-  near: 0.1,
-  camerPos: {
-    x: 0,
-    y: 0,
-    z: 10
+const props = defineProps({
+  backgroundColor: {
+    type: String,
+    default: "grey"
+  },
+  far: {
+    type: Number,
+    default: 100
+  },
+  fov: {
+    type: Number,
+    default: 35
+  },
+  near: {
+    type: Number,
+    default: 0.1
+  },
+  cameraPos: {
+    type: Object,
+    default: {
+      x: 0,
+      y: 0,
+      z: 10
+    }
   }
 })
 
@@ -44,9 +46,18 @@ let scene: Scene | null;
 let renderer: WebGLRenderer | null;
 let camera: PerspectiveCamera | null;
 
-function init() {
+onMounted(() => {
+  initCanvas();
+  createScene();
+  createCamera();
+  createCube();
+  createRenderer();
+  render();
+})
+
+function initCanvas() {
   container = document.getElementById("canvas");
-  if (!container) throw new Error("InitFailureExcepetion");
+  if (!container) throw new Error("CanvasNotFound");
 }
 
 function createScene() {
@@ -55,23 +66,20 @@ function createScene() {
 }
 
 function createCamera() {
-  const { fov, near, far } = props;
-  if (!container) throw new Error("ContainerIsNullExcepetion");
+  const { cameraPos, far, fov, near } = props;
+  if (!container) throw new Error("ContainerNotFound");
+  if (!cameraPos) throw new Error("CameraPositionUndefined");
   aspect = container.clientWidth / container.clientHeight;
   camera = new PerspectiveCamera(fov, aspect, near, far);
-  // every object is initially created at ( 0, 0, 0 )
-  // move the camera back so we can view the scene
-  camera.position.set(0, 0, 10);
+  camera.position.set(cameraPos.x, cameraPos.y, cameraPos.z);
 }
 
 function createCube() {
   const geometry = new BoxBufferGeometry(2, 2, 2);
   const material = new MeshBasicMaterial();
   const cube = new Mesh(geometry, material);
-
-  if (!scene) throw new Error("SceneNotFoundException");
+  if (!scene) throw new Error("SceneNotFound");
   scene.add(cube);
-
 }
 
 function createRenderer() {
@@ -86,28 +94,13 @@ function createRenderer() {
 }
 
 function render() {
-  if (!scene) throw new Error("SceneNotFoundException");
-  if (!camera) throw new Error("CameraNotFoundException");
-  if (!renderer) throw new Error("RendererNotFoundException");
+  if (!scene) throw new Error("SceneNotFound");
+  if (!camera) throw new Error("CameraNotFound");
+  if (!renderer) throw new Error("RendererNotFound");
   // render, or 'create a still image', of the scene
   renderer.render(scene, camera);
 }
-
-onMounted(() => {
-    init();
-    createScene();
-    createCamera();
-    createCube();
-    createRenderer();
-    render();
-})
-
 </script>
-
-<template>
-  <div id="canvas" />
-</template>
-
 <style>
 #canvas {
   width: 100%;
