@@ -15,41 +15,24 @@ import {
   Scene,
   WebGLRenderer,
 } from "three";
-import { useMouse } from "./hooks/mouse";
+import { useMouse } from "./composables/mouse";
+import { useCameraStore } from "@/stores/camera";
 
 const props = defineProps({
   backgroundColor: {
     type: String,
     default: "grey"
   },
-  far: {
-    type: Number,
-    default: 100
-  },
-  fov: {
-    type: Number,
-    default: 35
-  },
-  near: {
-    type: Number,
-    default: 0.1
-  },
-  cameraPos: {
-    type: Object,
-    default: {
-      x: 0,
-      y: 0,
-      z: 10
-    }
-  }
 })
 
 const mouse = useMouse();
+const { position, perspective } = useCameraStore();
+
 let container: HTMLElement | null;
-let aspect: number | null;
 let scene: Scene | null;
 let renderer: WebGLRenderer | null;
 let camera: PerspectiveCamera | null;
+
 
 onMounted(() => {
   initCanvas();
@@ -71,12 +54,10 @@ function createScene() {
 }
 
 function createCamera() {
-  const { cameraPos, far, fov, near } = props;
-  if (!container) throw new Error("ContainerNotFound");
-  if (!cameraPos) throw new Error("CameraPositionUndefined");
-  aspect = container.clientWidth / container.clientHeight;
-  camera = new PerspectiveCamera(fov, aspect, near, far);
-  camera.position.set(cameraPos.x, cameraPos.y, cameraPos.z);
+  if(!container) throw new Error('ContainerNotFound');
+  perspective.aspect = container.clientWidth / container.clientHeight;
+  camera = new PerspectiveCamera(perspective.fov, perspective.aspect, perspective.near, perspective.far);
+  camera.position.set(position.x, position.y, position.z);
 }
 
 function createCube() {
