@@ -1,6 +1,9 @@
 <template>
-  <div id="canvas" />
+  <p>Mouse Position</p>
+  <span>X: {{ mouse.x }} Y: {{ mouse.y }}</span>
+  <div id="canvas"></div>
 </template>
+
 <script setup lang="ts">
 import { onMounted } from "vue";
 import {
@@ -12,6 +15,7 @@ import {
   Scene,
   WebGLRenderer,
 } from "three";
+import { useMouse } from "./hooks/mouse";
 
 const props = defineProps({
   backgroundColor: {
@@ -40,6 +44,7 @@ const props = defineProps({
   }
 })
 
+const mouse = useMouse();
 let container: HTMLElement | null;
 let aspect: number | null;
 let scene: Scene | null;
