@@ -24,17 +24,20 @@ export function useSceneCreator(
   perspective?: Perspective,
   color?: string
 ) {
-
   const cameraPerspective = ref<Perspective>(DEFAULTS.PERSPECTIVE);
   const cameraPosition = ref<Position>(DEFAULTS.POSITION);
   let backgroundColor = "aqua";
   let container: HTMLElement;
 
   function initCanvas(target: HTMLElement | null) {
-    if(!target) throw new Error("CanvasTargetIsNull");
+    if (!target) throw new Error("CanvasTargetIsNull");
     container = target;
 
     return container;
+  }
+
+  function changeSceneBackground(scene: Scene, color: string) {
+    scene.background = new Color(color);
   }
 
   function createCamera() {
@@ -57,8 +60,9 @@ export function useSceneCreator(
     return scene;
   }
 
-  function createCube() {
-    const geometry = new BoxBufferGeometry(2, 2, 2);
+  function createCube(position = { x: 2, y: 2, z: 2 }) {
+    const { x, y, z } = position;
+    const geometry = new BoxBufferGeometry(x, y, z);
     const material = new MeshBasicMaterial();
     const cube = new Mesh(geometry, material)
 
@@ -77,7 +81,7 @@ export function useSceneCreator(
     return renderer;
   }
 
-  function render(renderer: Renderer,scene: Scene, camera: Camera) {
+  function render(renderer: Renderer, scene: Scene, camera: Camera) {
     renderer.render(scene, camera);
   }
 
@@ -85,5 +89,5 @@ export function useSceneCreator(
     scene.add(shape)
   }
 
-  return { initCanvas, createCamera, createScene, createRenderer, render, cameraPerspective, cameraPosition, createCube, addShape }
+  return { initCanvas, changeSceneBackground, createCamera, createScene, createRenderer, render, cameraPerspective, cameraPosition, createCube, addShape }
 }
