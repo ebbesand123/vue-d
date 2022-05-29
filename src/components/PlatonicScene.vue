@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { World } from '@/world/world';
-import { onBeforeUnmount, onMounted } from 'vue';
+import { World } from "@/world/world";
+import { onBeforeUnmount, onMounted } from "vue";
 
 let world: World;
 let container: HTMLElement | null;
@@ -16,11 +16,11 @@ onMounted(() => {
   world = new World(container);
   world.generateShapes();
   world.render();
-})
+});
 
 onBeforeUnmount(() => {
   world.destroy();
-})
+});
 </script>
 <style>
 #canvas {
