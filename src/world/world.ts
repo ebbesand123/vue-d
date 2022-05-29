@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Scene, type Renderer } from "three";
+import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
 import { createCamera } from "./components/camera"; 
 import { createCube } from "./components/cube";
 import { createScene } from "./components/scene";
@@ -13,7 +13,7 @@ since the second World object would share these variables
 with the first object 
 */
 let camera: PerspectiveCamera;
-let renderer: Renderer;
+let renderer: WebGLRenderer;
 let scene: Scene;
 
 export class World {
@@ -25,6 +25,8 @@ export class World {
 
     const cube = createCube();
     scene.add(cube);
+
+    const resizer = new Resizer(container, camera, renderer);
   }
 
   render(): void {
