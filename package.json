@@ -14,7 +14,7 @@
     "@mdi/font": "5.9.55",
     "pinia": "^2.0.13",
     "roboto-fontface": "*",
-    "three": "^0.140.2",
+    "three": "^0.141.0",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14",
     "webfontloader": "^1.0.0"

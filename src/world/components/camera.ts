@@ -1,6 +1,6 @@
 import { PerspectiveCamera } from "three";
 
-interface Position {
+export interface Position {
   x: number
   y: number
   z: number
