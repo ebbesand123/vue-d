@@ -4,7 +4,8 @@
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",
-    "test:unit": "vitest --environment jsdom",
+    "test:coverage": "vitest --coverage",
+    "test:unit": "vitest --reporter verbose",
     "lint": "eslint --fix src",
     "dev": "vite",
     "preview": "vite preview --port 5050",
@@ -35,6 +36,7 @@
     "@vue/eslint-config-typescript": "^10.0.0",
     "@vue/test-utils": "^2.0.0-rc.20",
     "@vue/tsconfig": "^0.1.3",
+    "c8": "^7.11.3",
     "eslint": "^8.16.0",
     "eslint-plugin-vue": "^8.7.1",
     "jsdom": "^19.0.0",

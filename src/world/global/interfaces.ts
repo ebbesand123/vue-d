@@ -19,7 +19,7 @@ interface Box {
 
 interface Polyhedron {
   radius: number;
-  detail: 0;
+  detail: number;
 }
 
 interface Sphere {

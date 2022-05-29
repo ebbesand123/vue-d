@@ -5,7 +5,7 @@ import { createDodecahedron } from "./components/dodecahedron";
 import { createIcosahedron } from "./components/icosahedron";
 import { createScene } from "./components/scene";
 import { createSphere } from "./components/sphere";
-import { createTetrahedron } from "./components/tertrahedron";
+import { createTetrahedron } from "./components/tetrahedron";
 import { createRenderer } from "./systems/renderer";
 import { Resizer } from "./systems/Resizer";
 
