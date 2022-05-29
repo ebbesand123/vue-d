@@ -9,9 +9,9 @@ export function createTetrahedron(
   const { x, y, z } = position;
   const geometry = new TetrahedronBufferGeometry(radius, detail);
   const material = new MeshBasicMaterial();
-  const tetrahedron = new Mesh(geometry, material)
+  const tetrahedron = new Mesh(geometry, material);
 
-  tetrahedron.position.set(x, y, z)
+  tetrahedron.position.set(x, y, z);
 
   return tetrahedron;
 }
