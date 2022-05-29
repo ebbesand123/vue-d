@@ -4,17 +4,22 @@
 
 <script setup lang="ts">
 import { World } from '@/world/world';
-import { onMounted } from 'vue';
+import { onBeforeUnmount, onMounted } from 'vue';
 
 let world: World;
 let container: HTMLElement | null;
 
 onMounted(() => {
   container = document.getElementById("canvas");
-  if (!container) return;
-  
+  if (!container) throw new Error("ContainerIsNull");
+
   world = new World(container);
+  world.generateShapes();
   world.render();
+})
+
+onBeforeUnmount(() => {
+  world.destroy();
 })
 </script>
 <style>
