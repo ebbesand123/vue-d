@@ -10,7 +10,7 @@ export function createIcosahedron(
   const geometry = new IcosahedronBufferGeometry(radius, detail);
   const material = new MeshBasicMaterial();
   const icosahedron = new Mesh(geometry, material);
-  
+
   icosahedron.position.set(x, y, z);
 
   return icosahedron;

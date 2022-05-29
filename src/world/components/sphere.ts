@@ -7,11 +7,15 @@ export function createSphere(
 ) {
   const { radius, widthSegments, heightSegments } = properties;
   const { x, y, z } = position;
-  const geometry = new SphereBufferGeometry(radius, widthSegments, heightSegments);
+  const geometry = new SphereBufferGeometry(
+    radius,
+    widthSegments,
+    heightSegments
+  );
   const material = new MeshBasicMaterial();
-  const sphere = new Mesh(geometry, material)
-  
-  sphere.position.set(x, y, z)
+  const sphere = new Mesh(geometry, material);
+
+  sphere.position.set(x, y, z);
 
   return sphere;
 }
