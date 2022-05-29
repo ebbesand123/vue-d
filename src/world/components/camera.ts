@@ -15,7 +15,7 @@ interface Perspective {
 
 export function createCamera(
   container: HTMLElement,
-  perspective: Perspective = {aspect: 1, fov: 35, near: 0.1, far: 100},
+  perspective: Perspective = { aspect: 1, fov: 35, near: 0.1, far: 100 },
   position: Position = { x: 0, y: 0, z: 10 }
 ) {
   perspective.aspect = container.clientWidth / container.clientHeight;
