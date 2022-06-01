@@ -4,6 +4,6 @@
   "compilerOptions": {
     "importsNotUsedAsValues": "preserve",
     "composite": true,
-    "types": ["node", "vitest"]
+    "types": ["vitest"]
   }
 }
