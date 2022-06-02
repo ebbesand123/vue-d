@@ -1,6 +1,5 @@
-import { describe, it, expect } from "vitest";
 import { Mesh } from "three";
-import { createBox, createCube } from "./box";
+import { createBox, createCube } from "@/world/components/box";
 
 describe("createBox()", () => {
   it("returns Box object when passing no arguments", () => {

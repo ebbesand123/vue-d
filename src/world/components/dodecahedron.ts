@@ -1,4 +1,4 @@
-import { DodecahedronBufferGeometry, Mesh, MeshBasicMaterial } from "three";
+import { DodecahedronBufferGeometry, Mesh, MeshStandardMaterial } from "three";
 import type { Polyhedron, Position } from "@/world/global/interfaces";
 
 export function createDodecahedron(
@@ -8,7 +8,7 @@ export function createDodecahedron(
   const { radius, detail } = properties;
   const { x, y, z } = position;
   const geometry = new DodecahedronBufferGeometry(radius, detail);
-  const material = new MeshBasicMaterial();
+  const material = new MeshStandardMaterial({ color: 0xe3f3f3 });
   const dodecahedron = new Mesh(geometry, material);
 
   dodecahedron.position.set(x, y, z);

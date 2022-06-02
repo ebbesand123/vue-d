@@ -1,6 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { Scene } from "three";
-import { createScene } from "./scene";
+import { createScene } from "@/world/components/scene";
 
 describe("createScene()", () => {
   it("returns a scene when passing no arguments", () => {

@@ -1,4 +1,4 @@
-import { IcosahedronBufferGeometry, Mesh, MeshBasicMaterial } from "three";
+import { IcosahedronBufferGeometry, Mesh, MeshStandardMaterial } from "three";
 import type { Polyhedron, Position } from "@/world/global/interfaces";
 
 export function createIcosahedron(
@@ -8,7 +8,7 @@ export function createIcosahedron(
   const { radius, detail } = properties;
   const { x, y, z } = position;
   const geometry = new IcosahedronBufferGeometry(radius, detail);
-  const material = new MeshBasicMaterial();
+  const material = new MeshStandardMaterial();
   const icosahedron = new Mesh(geometry, material);
 
   icosahedron.position.set(x, y, z);

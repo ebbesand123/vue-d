@@ -1,4 +1,4 @@
-import { BoxBufferGeometry, Mesh, MeshBasicMaterial } from "three";
+import { BoxBufferGeometry, Mesh, MeshStandardMaterial } from "three";
 import type { Box, Position } from "@/world/global/interfaces";
 
 export function createBox(
@@ -8,7 +8,7 @@ export function createBox(
   const { x, y, z } = position;
   const { width, height, depth } = measurements;
   const geometry = new BoxBufferGeometry(width, height, depth);
-  const material = new MeshBasicMaterial();
+  const material = new MeshStandardMaterial();
   const cube = new Mesh(geometry, material);
 
   cube.position.set(x, y, z);
@@ -22,7 +22,7 @@ export function createCube(
 ) {
   const { x, y, z } = position;
   const geometry = new BoxBufferGeometry(sideLength, sideLength, sideLength);
-  const material = new MeshBasicMaterial();
+  const material = new MeshStandardMaterial();
   const cube = new Mesh(geometry, material);
 
   cube.position.set(x, y, z);

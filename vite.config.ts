@@ -5,11 +5,34 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  define: { "process.env": {} },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    coverage: {
+      all: true,
+      clean: true,
+      exclude: [
+        "dist",
+        "public",
+        "coverage/**",
+        "packages/*/test{,s}/**",
+        "**/*.d.ts",
+        "test{,s}*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}",
+        "**/__tests__/**",
+        "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
+        "**/{jest}.config.{js,cjs,mjs,ts}",
+        "**/**.config.{js,cjs,mjs,ts}",
+        "**/{karma,rollup,webpack}.config.js",
+        "**/.{eslint,mocha}rc.{js,cjs}",
+        /** custom files */
+        "**/interfaces.ts",
+      ],
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
-    extensions: [".js", ".json", ".mjs", ".ts", ".tsx", ".vue"],
+    extensions: [".js", ".json", ".mjs", ".ts", ".tsx"],
   },
 });

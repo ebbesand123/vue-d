@@ -1,6 +1,5 @@
-import { describe, it, expect } from "vitest";
 import { Mesh } from "three";
-import { createTetrahedron } from "./tetrahedron";
+import { createTetrahedron } from "@/world/components/tetrahedron";
 
 describe("createTetrahedron()", () => {
   it("returns Tetrahedron object when passing no arguments", () => {

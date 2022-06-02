@@ -1,6 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { Camera } from "three";
-import { createCamera } from "./camera";
+import { createCamera } from "@/world/components/camera";
 import { JSDOM } from "jsdom";
 
 const dom = new JSDOM(`<div id="canvas">`);

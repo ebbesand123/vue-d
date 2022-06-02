@@ -1,4 +1,4 @@
-import { SphereBufferGeometry, Mesh, MeshBasicMaterial } from "three";
+import { SphereBufferGeometry, Mesh, MeshStandardMaterial } from "three";
 import type { Position, Sphere } from "@/world/global/interfaces";
 
 export function createSphere(
@@ -12,7 +12,7 @@ export function createSphere(
     widthSegments,
     heightSegments
   );
-  const material = new MeshBasicMaterial();
+  const material = new MeshStandardMaterial();
   const sphere = new Mesh(geometry, material);
 
   sphere.position.set(x, y, z);
