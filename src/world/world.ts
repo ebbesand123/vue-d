@@ -3,7 +3,7 @@ import { createBox, createCube } from "./components/box";
 import { createCamera } from "./components/camera";
 import { createDodecahedron } from "./components/dodecahedron";
 import { createIcosahedron } from "./components/icosahedron";
-import { createPointLight } from "./components/light";
+import { createDirectionalLight } from "./components/light";
 import { createScene } from "./components/scene";
 import { createSphere } from "./components/sphere";
 import { createTetrahedron } from "./components/tetrahedron";
@@ -33,12 +33,15 @@ class World implements IWorld {
     this.container = container;
     this.camera = createCamera(container);
     this.scene = createScene();
-    const light = createPointLight();
+    const light = createDirectionalLight();
     this.scene.add(light);
     this.renderer = createRenderer(container);
     this.container.append(this.renderer.domElement);
     // eslint-disable-next-line
     const resizer = new Resizer(container, this.camera, this.renderer);
+    resizer.onResize = () => {
+      this.render();
+    };
   }
 
   generateShapes() {

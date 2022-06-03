@@ -8,11 +8,11 @@ interface Perspective {
   aspect: number; // aspect ratio
   fov: number; // field of view
   near: number; // near clipping plane
-  far: number; // far clipping plane
+  far: number; // far clipping plane - 100 equals 100 meters
 }
 
 interface Box {
-  width: number;
+  width: number; // 1 unit = 1 meter
   height: number;
   depth: number;
 }

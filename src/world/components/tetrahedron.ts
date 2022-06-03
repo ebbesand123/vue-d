@@ -11,6 +11,7 @@ export function createTetrahedron(
   const material = new MeshStandardMaterial();
   const tetrahedron = new Mesh(geometry, material);
 
+  tetrahedron.rotation.set(-0.7, -0.3, 2);
   tetrahedron.position.set(x, y, z);
 
   return tetrahedron;

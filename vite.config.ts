@@ -15,6 +15,7 @@ export default defineConfig({
         "dist",
         "public",
         "coverage/**",
+        "**/router/*",
         "packages/*/test{,s}/**",
         "**/*.d.ts",
         "test{,s}*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}",
@@ -22,6 +23,7 @@ export default defineConfig({
         "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
         "**/{jest}.config.{js,cjs,mjs,ts}",
         "**/**.config.{js,cjs,mjs,ts}",
+        "**/{{A,a}pp,main}.?(module.){js,cjs,mjs,ts,vue}",
         "**/{karma,rollup,webpack}.config.js",
         "**/.{eslint,mocha}rc.{js,cjs}",
         /** custom files */
