@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import {
   NButton,
+  NButtonGroup,
   NDrawer,
   NDrawerContent,
   type DrawerPlacement,
@@ -17,9 +18,16 @@ function toggle() {
 
 <template>
   <header>
-    <n-button @click="toggle">Menu</n-button>
+    <n-button-group vertical>
+      <n-button tertiary @click="toggle">
+        <div class="button">Navigation</div>
+      </n-button>
+      <n-button tertiary disabled round>
+        <div class="button">Scene Controls</div>
+      </n-button>
+    </n-button-group>
   </header>
-  <n-drawer v-model:show="active" :width="502" :placement="placement">
+  <n-drawer v-model:show="active" :width="320" :placement="placement">
     <n-drawer-content title="Menu">
       <nav>
         <RouterLink to="/"> Home </RouterLink>
@@ -32,7 +40,13 @@ function toggle() {
 </template>
 <style>
 header {
+  position: absolute;
+}
+.button {
+  padding: 16px;
+}
+nav {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 </style>
