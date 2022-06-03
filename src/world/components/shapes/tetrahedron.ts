@@ -1,5 +1,5 @@
 import { TetrahedronBufferGeometry, Mesh, MeshStandardMaterial } from "three";
-import type { Position, Polyhedron } from "@/world/global/interfaces";
+import type { Position, Polyhedron } from "@world/global/interfaces";
 
 export function createTetrahedron(
   properties: Polyhedron = { radius: 1, detail: 0 },

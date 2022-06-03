@@ -1,5 +1,5 @@
 import { OctahedronBufferGeometry, Mesh, MeshStandardMaterial } from "three";
-import type { Polyhedron, Position } from "@/world/global/interfaces";
+import type { Polyhedron, Position } from "@world/global/interfaces";
 
 export function createOctahedron(
   properties: Polyhedron = { radius: 1, detail: 0 },

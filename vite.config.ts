@@ -34,6 +34,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
+      "@world": path.resolve(__dirname, "src", "world"),
     },
     extensions: [".js", ".json", ".mjs", ".ts", ".tsx"],
   },

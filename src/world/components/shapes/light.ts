@@ -5,7 +5,7 @@ import {
   PointLight,
   PointLightHelper,
 } from "three";
-import type { Position } from "../global/interfaces";
+import type { Position } from "@world/global/interfaces";
 
 function createAmbientLight() {
   const ambientLight = new AmbientLight();

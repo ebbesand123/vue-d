@@ -1,5 +1,5 @@
 import { Mesh } from "three";
-import { createTetrahedron } from "@/world/components/tetrahedron";
+import { createTetrahedron } from "@world/components/shapes/tetrahedron";
 
 describe("createTetrahedron()", () => {
   it("returns Tetrahedron object when passing no arguments", () => {

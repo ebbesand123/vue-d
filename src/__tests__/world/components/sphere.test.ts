@@ -1,5 +1,5 @@
 import { Mesh } from "three";
-import { createSphere } from "@/world/components/sphere";
+import { createSphere } from "@world/components/shapes/sphere";
 
 describe("createSphere()", () => {
   it("returns Sphere object when passing no arguments", () => {

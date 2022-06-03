@@ -1,5 +1,5 @@
 import { SphereBufferGeometry, Mesh, MeshStandardMaterial } from "three";
-import type { Position, Sphere } from "@/world/global/interfaces";
+import type { Position, Sphere } from "@world/global/interfaces";
 
 export function createSphere(
   properties: Sphere = { radius: 1, widthSegments: 8, heightSegments: 6 },
