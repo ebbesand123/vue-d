@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { World } from "@/world/world";
+import { World } from "@world/world";
 import { onBeforeUnmount, onMounted } from "vue";
 
 let world: World;

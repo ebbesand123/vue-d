@@ -1,14 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["src/**/__tests__/*"],
+  "exclude": ["**/*.{test,spec}.*"],
   "compilerOptions": {
     "importsNotUsedAsValues": "preserve",
-    "types": ["node", "jsdom"],
+    "types": ["node", "jsdom", "vitest/globals"],
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@client/*": ["./src/client/*"],
       "@world/*": ["./src/world/*"]
     }
   }

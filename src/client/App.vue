@@ -30,8 +30,8 @@ function toggle() {
   <n-drawer v-model:show="active" :width="320" :placement="placement">
     <n-drawer-content title="Menu">
       <nav>
-        <RouterLink to="/"> Home </RouterLink>
-        <RouterLink to="/platonic"> Platonische Körper </RouterLink>
+        <RouterLink to="/"> Platonic </RouterLink>
+        <RouterLink to="/see"> See </RouterLink>
       </nav>
     </n-drawer-content>
   </n-drawer>

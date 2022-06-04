@@ -6,7 +6,7 @@
     "prebuild": "eslint --fix src && prettier . --write && vue-tsc --noEmit -p tsconfig.vitest.json --composite false && vitest run --coverage",
     "build": "vite build",
     "format": "prettier . --write",
-    "lint": "eslint --fix src",
+    "lint": "eslint src --ext .ts,.vue,.js --fix",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",

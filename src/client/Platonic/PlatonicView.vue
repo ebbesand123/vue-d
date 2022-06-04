@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NGrid, NGridItem } from "naive-ui";
-import PlatonicScene from "@/components/PlatonicScene.vue";
+import PlatonicScene from "@client/Platonic/PlatonicScene.vue";
 </script>
 
 <template>
