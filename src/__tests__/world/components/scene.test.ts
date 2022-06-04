@@ -1,5 +1,5 @@
 import { Scene } from "three";
-import { createScene } from "@world/components/shapes/scene";
+import { createScene } from "@world/components/scene";
 
 describe("createScene()", () => {
   it("returns a scene when passing no arguments", () => {

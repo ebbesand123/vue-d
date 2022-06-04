@@ -15,7 +15,7 @@ onMounted(() => {
 
   world = new World(container);
   world.generateShapes();
-  world.render();
+  world.start();
 });
 
 onBeforeUnmount(() => {

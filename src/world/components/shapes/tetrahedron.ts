@@ -10,8 +10,12 @@ export function createTetrahedron(
   const geometry = new TetrahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
   const tetrahedron = new Mesh(geometry, material);
-
-  tetrahedron.rotation.set(-0.7, -0.3, 2);
+  tetrahedron.tick = () => {
+    // increase the cube's rotation each frame
+    tetrahedron.rotation.z += 0.01;
+    tetrahedron.rotation.x += 0.01;
+    tetrahedron.rotation.y += 0.01;
+  };
   tetrahedron.position.set(x, y, z);
 
   return tetrahedron;

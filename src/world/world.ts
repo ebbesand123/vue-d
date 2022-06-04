@@ -1,10 +1,10 @@
 import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
 import { createBox, createCube } from "@world/components/shapes/box";
-import { createCamera } from "@world/components/shapes/camera";
+import { createCamera } from "@world/components/camera";
 import { createDodecahedron } from "@world/components/shapes/dodecahedron";
 import { createIcosahedron } from "@world/components/shapes/icosahedron";
-import { createDirectionalLight } from "@world/components/shapes/light";
-import { createScene } from "@world/components/shapes/scene";
+import { createDirectionalLight } from "@world/components/light";
+import { createScene } from "@world/components/scene";
 import { createSphere } from "@world/components/shapes/sphere";
 import { createTetrahedron } from "@world/components/shapes/tetrahedron";
 import { Loop } from "@world/systems/Loop";
@@ -17,10 +17,11 @@ interface IWorld {
   scene: Scene;
   renderer: WebGLRenderer;
   // light: AmbientLight;
-
   generateShapes(): void;
   render(): void;
   destroy(): void;
+  start(): void;
+  stop(): void;
 }
 
 class World implements IWorld {
@@ -29,23 +30,20 @@ class World implements IWorld {
   renderer: WebGLRenderer;
   container: HTMLElement;
   loop: Loop;
+  resizer: Resizer;
   // light: AmbientLight;
 
   constructor(container: HTMLElement) {
     if (container === null) throw Error("ProvidedContainerIsNull");
     this.container = container;
     this.camera = createCamera(container);
-    this.scene = createScene();
+    this.scene = createScene("turquoise");
     const light = createDirectionalLight();
     this.scene.add(light);
     this.renderer = createRenderer(container);
     this.loop = new Loop(this.camera, this.scene, this.renderer);
     this.container.append(this.renderer.domElement);
-    // eslint-disable-next-line
-    const resizer = new Resizer(container, this.camera, this.renderer);
-    resizer.onResize = () => {
-      this.render();
-    };
+    this.resizer = new Resizer(container, this.camera, this.renderer);
   }
 
   generateShapes() {
@@ -67,6 +65,7 @@ class World implements IWorld {
     // Add every shape to scene
     shapes.forEach((shape) => {
       this.scene.add(shape);
+      this.loop.updatables.push(shape);
     });
   }
 

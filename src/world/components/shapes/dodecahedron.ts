@@ -10,7 +10,12 @@ export function createDodecahedron(
   const geometry = new DodecahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial({ color: 0xe3f3f3 });
   const dodecahedron = new Mesh(geometry, material);
-
+  dodecahedron.tick = () => {
+    // increase the cube's rotation each frame
+    dodecahedron.rotation.z += 0.01;
+    dodecahedron.rotation.x += 0.01;
+    dodecahedron.rotation.y += 0.01;
+  };
   dodecahedron.position.set(x, y, z);
 
   return dodecahedron;

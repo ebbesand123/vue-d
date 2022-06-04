@@ -14,7 +14,12 @@ export function createSphere(
   );
   const material = new MeshStandardMaterial();
   const sphere = new Mesh(geometry, material);
-
+  sphere.tick = () => {
+    // increase the cube's rotation each frame
+    sphere.rotation.z += 0.01;
+    sphere.rotation.x += 0.01;
+    sphere.rotation.y += 0.01;
+  };
   sphere.position.set(x, y, z);
 
   return sphere;

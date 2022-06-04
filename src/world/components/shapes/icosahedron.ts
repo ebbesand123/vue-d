@@ -10,7 +10,12 @@ export function createIcosahedron(
   const geometry = new IcosahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
   const icosahedron = new Mesh(geometry, material);
-
+  icosahedron.tick = () => {
+    // increase the cube's rotation each frame
+    icosahedron.rotation.z += 0.01;
+    icosahedron.rotation.x += 0.01;
+    icosahedron.rotation.y += 0.01;
+  };
   icosahedron.position.set(x, y, z);
 
   return icosahedron;

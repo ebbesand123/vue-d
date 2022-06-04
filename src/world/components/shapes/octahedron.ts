@@ -10,7 +10,12 @@ export function createOctahedron(
   const geometry = new OctahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
   const octahedron = new Mesh(geometry, material);
-
+  octahedron.tick = () => {
+    // increase the cube's rotation each frame
+    octahedron.rotation.z += 0.01;
+    octahedron.rotation.x += 0.01;
+    octahedron.rotation.y += 0.01;
+  };
   octahedron.position.set(x, y, z);
 
   return octahedron;

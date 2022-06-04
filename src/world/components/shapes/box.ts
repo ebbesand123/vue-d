@@ -9,11 +9,16 @@ export function createBox(
   const { width, height, depth } = measurements;
   const geometry = new BoxBufferGeometry(width, height, depth);
   const material = new MeshStandardMaterial();
-  const cube = new Mesh(geometry, material);
+  const box = new Mesh(geometry, material);
+  box.tick = () => {
+    // increase the cube's rotation each frame
+    box.rotation.z += 0.01;
+    box.rotation.x += 0.01;
+    box.rotation.y += 0.01;
+  };
+  box.position.set(x, y, z);
 
-  cube.position.set(x, y, z);
-
-  return cube;
+  return box;
 }
 
 export function createCube(
@@ -27,6 +32,11 @@ export function createCube(
 
   cube.rotation.set(-0.5, -0.1, 0.8);
   cube.position.set(x, y, z);
-
+  cube.tick = () => {
+    // increase the cube's rotation each frame
+    cube.rotation.z += 0.01;
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+  };
   return cube;
 }

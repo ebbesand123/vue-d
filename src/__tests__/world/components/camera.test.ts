@@ -1,5 +1,5 @@
 import { Camera } from "three";
-import { createCamera } from "@world/components/shapes/camera";
+import { createCamera } from "@world/components/camera";
 import { JSDOM } from "jsdom";
 
 const dom = new JSDOM(`<div id="canvas">`);
