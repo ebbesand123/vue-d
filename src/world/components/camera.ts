@@ -1,5 +1,5 @@
 import { PerspectiveCamera } from "three";
-import type { Perspective, Position } from "@/world/global/interfaces";
+import type { Perspective, Position } from "@world/global/interfaces";
 
 export function createCamera(
   container: HTMLElement,

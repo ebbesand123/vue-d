@@ -1,5 +1,5 @@
 import { Mesh } from "three";
-import { createBox, createCube } from "@/world/components/box";
+import { createBox, createCube } from "@world/components/shapes/box";
 
 describe("createBox()", () => {
   it("returns Box object when passing no arguments", () => {

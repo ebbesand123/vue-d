@@ -1,5 +1,5 @@
 import { Mesh } from "three";
-import { createOctahedron } from "@/world/components/octahedron";
+import { createOctahedron } from "@world/components/shapes/octahedron";
 
 describe("createOctahedron()", () => {
   it("returns Octahedron object when passing no arguments", () => {

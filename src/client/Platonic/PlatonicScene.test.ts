@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
-import PlatonicScene from "@/components/PlatonicScene.vue";
+
+import PlatonicScene from "@client/Platonic/PlatonicScene.vue";
 
 describe("PlatonicScene", () => {
   it("mounts correctly", () => {

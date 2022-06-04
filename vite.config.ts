@@ -15,13 +15,15 @@ export default defineConfig({
         "dist",
         "public",
         "coverage/**",
+        "**/router/*",
         "packages/*/test{,s}/**",
         "**/*.d.ts",
         "test{,s}*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}",
-        "**/__tests__/**",
+        "**/*.{test,spec}.*",
         "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
         "**/{jest}.config.{js,cjs,mjs,ts}",
         "**/**.config.{js,cjs,mjs,ts}",
+        "**/{{A,a}pp,main}.?(module.){js,cjs,mjs,ts,vue}",
         "**/{karma,rollup,webpack}.config.js",
         "**/.{eslint,mocha}rc.{js,cjs}",
         /** custom files */
@@ -31,8 +33,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@client": path.resolve(__dirname, "src", "client"),
+      "@world": path.resolve(__dirname, "src", "world"),
     },
-    extensions: [".js", ".json", ".mjs", ".ts", ".tsx"],
+    extensions: [".js", ".json", ".mjs", ".ts", ".tsx"], // must not contain .vue
   },
 });
