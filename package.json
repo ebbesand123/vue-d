@@ -10,8 +10,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
-    "dev": "vite",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
+    "dev": "vite"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
