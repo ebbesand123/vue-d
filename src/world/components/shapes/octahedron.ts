@@ -1,5 +1,6 @@
-import { OctahedronBufferGeometry, Mesh, MeshStandardMaterial } from "three";
+import { OctahedronBufferGeometry, MeshStandardMaterial } from "three";
 import type { Polyhedron, Position } from "@world/global/interfaces";
+import { TMesh } from "@world/global/classes";
 
 export function createOctahedron(
   properties: Polyhedron = { radius: 1, detail: 0 },
@@ -9,13 +10,7 @@ export function createOctahedron(
   const { x, y, z } = position;
   const geometry = new OctahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
-  const octahedron = new Mesh(geometry, material);
-  octahedron.tick = () => {
-    // increase the cube's rotation each frame
-    octahedron.rotation.z += 0.01;
-    octahedron.rotation.x += 0.01;
-    octahedron.rotation.y += 0.01;
-  };
+  const octahedron = new TMesh(geometry, material);
   octahedron.position.set(x, y, z);
 
   return octahedron;

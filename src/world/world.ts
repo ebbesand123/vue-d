@@ -1,11 +1,12 @@
 import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
-import { createBox, createCube } from "@world/components/shapes/box";
+import { createCube } from "@world/components/shapes/box";
 import { createCamera } from "@world/components/camera";
 import { createDodecahedron } from "@world/components/shapes/dodecahedron";
 import { createIcosahedron } from "@world/components/shapes/icosahedron";
+import { createOctahedron } from "@world/components/shapes/octahedron";
 import { createDirectionalLight } from "@world/components/light";
 import { createScene } from "@world/components/scene";
-import { createSphere } from "@world/components/shapes/sphere";
+// import { createSphere } from "@world/components/shapes/sphere";
 import { createTetrahedron } from "@world/components/shapes/tetrahedron";
 import { Loop } from "@world/systems/Loop";
 import { createRenderer } from "@world/systems/renderer";
@@ -48,21 +49,11 @@ class World implements IWorld {
 
   generateShapes() {
     const shapes = [];
-    shapes.push(createCube());
-    shapes.push(
-      createBox({ width: 3, height: 1, depth: 2 }, { x: 3, y: 0, z: 0 })
-    );
+    shapes.push(createCube(undefined, { x: 1, y: -1, z: -12.5 }));
     shapes.push(createTetrahedron(undefined, { x: -3, y: -2, z: -4 }));
-    shapes.push(createIcosahedron(undefined, { x: -4, y: 2, z: 0 }));
-    shapes.push(
-      createSphere(
-        { radius: 1, widthSegments: 16, heightSegments: 16 },
-        { x: 0.5, y: 2, z: 0 }
-      )
-    );
-    shapes.push(createDodecahedron(undefined, { x: -3, y: 2, z: -3 }));
-
-    // Add every shape to scene
+    shapes.push(createIcosahedron(undefined, { x: -2.2, y: 2, z: 0 }));
+    shapes.push(createDodecahedron(undefined, { x: -3, y: 0, z: -2 }));
+    shapes.push(createOctahedron(undefined, { x: 3, y: 2, z: -3 }));
     shapes.forEach((shape) => {
       this.scene.add(shape);
       this.loop.updatables.push(shape);

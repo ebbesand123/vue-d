@@ -1,5 +1,6 @@
-import { SphereBufferGeometry, Mesh, MeshStandardMaterial } from "three";
+import { SphereBufferGeometry, MeshStandardMaterial } from "three";
 import type { Position, Sphere } from "@world/global/interfaces";
+import { TMesh } from "@world/global/classes";
 
 export function createSphere(
   properties: Sphere = { radius: 1, widthSegments: 8, heightSegments: 6 },
@@ -13,13 +14,7 @@ export function createSphere(
     heightSegments
   );
   const material = new MeshStandardMaterial();
-  const sphere = new Mesh(geometry, material);
-  sphere.tick = () => {
-    // increase the cube's rotation each frame
-    sphere.rotation.z += 0.01;
-    sphere.rotation.x += 0.01;
-    sphere.rotation.y += 0.01;
-  };
+  const sphere = new TMesh(geometry, material);
   sphere.position.set(x, y, z);
 
   return sphere;

@@ -4,6 +4,7 @@
   "compilerOptions": {
     "importsNotUsedAsValues": "preserve",
     "composite": true,
+    "skipLibCheck": true,
     "types": ["vitest"]
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Camera, Clock, Scene, WebGLRenderer } from "three";
 
 export class Loop {
@@ -27,7 +28,6 @@ export class Loop {
   }
 
   tick() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.updatables.forEach((object: Record<"tick", any>) => {
       object.tick();
     });

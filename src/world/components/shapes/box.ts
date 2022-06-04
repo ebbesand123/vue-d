@@ -1,5 +1,6 @@
-import { BoxBufferGeometry, Mesh, MeshStandardMaterial } from "three";
+import { BoxBufferGeometry, MeshStandardMaterial } from "three";
 import type { Box, Position } from "@world/global/interfaces";
+import { TMesh } from "@world/global/classes";
 
 export function createBox(
   measurements: Box = { width: 2, height: 2, depth: 2 },
@@ -9,13 +10,7 @@ export function createBox(
   const { width, height, depth } = measurements;
   const geometry = new BoxBufferGeometry(width, height, depth);
   const material = new MeshStandardMaterial();
-  const box = new Mesh(geometry, material);
-  box.tick = () => {
-    // increase the cube's rotation each frame
-    box.rotation.z += 0.01;
-    box.rotation.x += 0.01;
-    box.rotation.y += 0.01;
-  };
+  const box = new TMesh(geometry, material);
   box.position.set(x, y, z);
 
   return box;
@@ -28,7 +23,7 @@ export function createCube(
   const { x, y, z } = position;
   const geometry = new BoxBufferGeometry(sideLength, sideLength, sideLength);
   const material = new MeshStandardMaterial();
-  const cube = new Mesh(geometry, material);
+  const cube = new TMesh(geometry, material);
 
   cube.rotation.set(-0.5, -0.1, 0.8);
   cube.position.set(x, y, z);
