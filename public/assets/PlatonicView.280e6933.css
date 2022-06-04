@@ -1,1 +1,14 @@
-#canvas{width:100%;height:100%}h1[data-v-4d436ab0]{position:absolute;margin-left:auto;margin-right:auto;right:50%;text-align:center}.grid[data-v-4d436ab0]{height:100%}
+#canvas {
+  width: 100%;
+  height: 100%;
+}
+h1[data-v-4d436ab0] {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  right: 50%;
+  text-align: center;
+}
+.grid[data-v-4d436ab0] {
+  height: 100%;
+}
