@@ -21,11 +21,17 @@ interface Polyhedron {
   radius: number;
   detail: number;
 }
+interface ShapeOptions {
+  shape: string | null;
+  color: string;
+  x: number;
+  y: number;
+  z: number;
+}
 
 interface Sphere {
   radius: number;
   widthSegments: number;
   heightSegments: number;
 }
-
-export type { Box, Perspective, Polyhedron, Position, Sphere };
+export type { Box, Perspective, Polyhedron, Position, ShapeOptions, Sphere };
