@@ -1,10 +1,11 @@
 import { Mesh } from "three";
-
+import { MathUtils } from "three";
 class TMesh extends Mesh {
-  tick() {
-    this.rotation.z += 0.01;
-    this.rotation.x += 0.01;
-    this.rotation.y += 0.01;
+  radiansPerSecond = MathUtils.degToRad(30);
+  tick(delta: number) {
+    this.rotation.z += this.radiansPerSecond * delta;
+    this.rotation.x += this.radiansPerSecond * delta;
+    this.rotation.y += this.radiansPerSecond * delta;
   }
 }
 

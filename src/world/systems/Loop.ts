@@ -10,7 +10,7 @@ export class Loop {
 
   constructor(camera: Camera, scene: Scene, renderer: WebGLRenderer) {
     this.camera = camera;
-    this.clock = new Clock(true);
+    this.clock = new Clock();
     this.scene = scene;
     this.renderer = renderer;
     this.updatables = [];
@@ -28,8 +28,9 @@ export class Loop {
   }
 
   tick() {
+    const delta = this.clock.getDelta();
     this.updatables.forEach((object: Record<"tick", any>) => {
-      object.tick();
+      object.tick(delta);
     });
   }
 }
