@@ -59,11 +59,17 @@ class World implements IWorld {
     this.resizer = new Resizer(container, this.camera, this.renderer);
     this.loop.updatables.push(this.camera);
     this.scene.add(createGridHelper());
+    window.addEventListener("start", () => {
+      this.start();
+    });
+    window.addEventListener("stop", () => {
+      this.stop();
+    });
   }
 
   generateShapes() {
     const shapes = [];
-    shapes.push(createCube(undefined, { x: 1, y: -1, z: -12.5 }));
+    shapes.push(createCube(undefined, { x: 1, y: -1, z: -1.3 }));
     shapes.push(createTetrahedron(undefined, { x: -3, y: -2, z: -4 }));
     shapes.push(createIcosahedron(undefined, { x: -2.2, y: 2, z: 0 }));
     shapes.push(createDodecahedron(undefined, { x: -3, y: 0, z: -2 }));
@@ -79,6 +85,12 @@ class World implements IWorld {
   }
 
   destroy(): void {
+    window.removeEventListener("start", () => {
+      this.start();
+    });
+    window.removeEventListener("stop", () => {
+      this.stop();
+    });
     this.renderer.dispose();
   }
 

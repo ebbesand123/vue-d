@@ -2,6 +2,14 @@
   <div class="controls">
     <h2>Controls</h2>
     <n-space vertical justify="center">
+      <n-button-group horizontal>
+        <n-button type="primary" @click="onAnimate('start')"
+          >Start Animation</n-button
+        >
+        <n-button type="tertiary" @click="onAnimate('stop')"
+          >Stop Animation</n-button
+        >
+      </n-button-group>
       Shape
       <n-select
         v-model:value="options.shape"
@@ -46,7 +54,7 @@
 </template>
 <script setup lang="ts">
 import { ref, type Ref } from "vue";
-import { NSlider, NSpace, NSelect } from "naive-ui";
+import { NButton, NButtonGroup, NSlider, NSpace, NSelect } from "naive-ui";
 import type { ShapeOptions } from "@world/global/interfaces";
 const colors = [
   { label: "white", value: "white" },
@@ -74,6 +82,12 @@ const options: Ref<ShapeOptions> = ref({
 const emit = defineEmits<{
   (e: "optionsUpdated", props: ShapeOptions): void;
 }>();
+
+const onAnimate = function (name: string) {
+  if (name === ("start" || "stop")) return;
+  // emitted globally on client window object
+  window.dispatchEvent(new Event(name));
+};
 </script>
 <style scoped>
 .controls {
