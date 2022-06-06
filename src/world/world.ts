@@ -4,19 +4,25 @@ import { createCamera } from "@world/components/camera";
 import { createDodecahedron } from "@world/components/shapes/dodecahedron";
 import { createIcosahedron } from "@world/components/shapes/icosahedron";
 import { createOctahedron } from "@world/components/shapes/octahedron";
-import { createDirectionalLight } from "@world/components/light";
+import {
+  createDirectionalLight,
+  createDirectionalLightHelper,
+} from "@world/components/light";
 import { createScene } from "@world/components/scene";
 // import { createSphere } from "@world/components/shapes/sphere";
 import { createTetrahedron } from "@world/components/shapes/tetrahedron";
 import { Loop } from "@world/systems/Loop";
 import { createRenderer } from "@world/systems/renderer";
 import { Resizer } from "@world/systems/Resizer";
+import { UpdatableCamera } from "@world/global/classes";
+import { createGridHelper } from "@world/global/helpers";
 
 interface IWorld {
   container: HTMLElement;
-  camera: PerspectiveCamera;
+  camera: PerspectiveCamera | UpdatableCamera;
   scene: Scene;
   renderer: WebGLRenderer;
+  resizer: Resizer;
   // light: AmbientLight;
   generateShapes(): void;
   render(): void;
@@ -26,7 +32,7 @@ interface IWorld {
 }
 
 class World implements IWorld {
-  camera: PerspectiveCamera;
+  camera: UpdatableCamera;
   scene: Scene;
   renderer: WebGLRenderer;
   container: HTMLElement;
@@ -35,16 +41,24 @@ class World implements IWorld {
   // light: AmbientLight;
 
   constructor(container: HTMLElement) {
-    if (container === null) throw Error("ProvidedContainerIsNull");
+    if (container === null) throw new Error("ProvidedContainerIsNull");
     this.container = container;
-    this.camera = createCamera(container);
+    this.camera = createCamera(container, undefined, { x: 0, y: 0, z: 30 });
     this.scene = createScene("turquoise");
-    const light = createDirectionalLight();
+    const light = createDirectionalLight(undefined, 8, {
+      x: 0,
+      y: 5,
+      z: 0,
+    });
+    const lighthelper = createDirectionalLightHelper(light, 1);
     this.scene.add(light);
+    this.scene.add(lighthelper);
     this.renderer = createRenderer(container);
     this.loop = new Loop(this.camera, this.scene, this.renderer);
     this.container.append(this.renderer.domElement);
     this.resizer = new Resizer(container, this.camera, this.renderer);
+    this.loop.updatables.push(this.camera);
+    this.scene.add(createGridHelper());
   }
 
   generateShapes() {

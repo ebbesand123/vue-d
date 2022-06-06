@@ -1,11 +1,12 @@
 import {
   AmbientLight,
   type ColorRepresentation,
-  DirectionalLight,
+  DirectionalLightHelper,
   PointLight,
   PointLightHelper,
 } from "three";
 import type { Position } from "@world/global/interfaces";
+import { UpdatableDirectionalLight } from "@world/global/classes";
 
 function createAmbientLight() {
   const ambientLight = new AmbientLight();
@@ -16,10 +17,10 @@ function createAmbientLight() {
 function createDirectionalLight(
   color: ColorRepresentation = "white",
   intensity = 8,
-  position: Position = { x: 10, y: 10, z: 10 }
+  position: Position = { x: 0, y: -10, z: 10 }
 ) {
   const { x, y, z } = position;
-  const directionalLight = new DirectionalLight(color, intensity);
+  const directionalLight = new UpdatableDirectionalLight(color, intensity);
   directionalLight.position.set(x, y, z);
 
   return directionalLight;
@@ -39,9 +40,21 @@ function createPointLightHelper(pointLight: PointLight) {
   return pointLightHelper;
 }
 
+function createDirectionalLightHelper(
+  directionalLight: UpdatableDirectionalLight,
+  sphereSize = 1
+) {
+  const directionalLightHelper = new DirectionalLightHelper(
+    directionalLight,
+    sphereSize
+  );
+
+  return directionalLightHelper;
+}
 export {
   createAmbientLight,
   createDirectionalLight,
+  createDirectionalLightHelper,
   createPointLight,
   createPointLightHelper,
 };

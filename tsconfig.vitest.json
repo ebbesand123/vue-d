@@ -1,4 +1,4 @@
-/* used for script in package.json */
+/* used for typecheck script in package.json */
 {
   "extends": "./tsconfig.app.json",
   "exclude": [],

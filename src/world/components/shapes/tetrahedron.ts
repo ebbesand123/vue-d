@@ -1,6 +1,6 @@
 import { TetrahedronBufferGeometry, MeshStandardMaterial } from "three";
 import type { Position, Polyhedron } from "@world/global/interfaces";
-import { TMesh } from "@world/global/classes";
+import { UpdatableObject } from "@world/global/classes";
 
 export function createTetrahedron(
   properties: Polyhedron = { radius: 1, detail: 0 },
@@ -10,7 +10,7 @@ export function createTetrahedron(
   const { x, y, z } = position;
   const geometry = new TetrahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
-  const tetrahedron = new TMesh(geometry, material);
+  const tetrahedron = new UpdatableObject(geometry, material);
   tetrahedron.position.set(x, y, z);
 
   return tetrahedron;

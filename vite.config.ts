@@ -15,7 +15,7 @@ export default defineConfig({
         "**/.cache",
         "**/.temp",
         "**/node_modules",
-        "dist",
+        "**/dist/**",
         "public",
         "coverage/**",
         "**/Router/*",

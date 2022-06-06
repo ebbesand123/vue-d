@@ -1,6 +1,6 @@
 import { SphereBufferGeometry, MeshStandardMaterial } from "three";
 import type { Position, Sphere } from "@world/global/interfaces";
-import { TMesh } from "@world/global/classes";
+import { UpdatableObject } from "@world/global/classes";
 
 export function createSphere(
   properties: Sphere = { radius: 1, widthSegments: 8, heightSegments: 6 },
@@ -14,7 +14,7 @@ export function createSphere(
     heightSegments
   );
   const material = new MeshStandardMaterial();
-  const sphere = new TMesh(geometry, material);
+  const sphere = new UpdatableObject(geometry, material);
   sphere.position.set(x, y, z);
 
   return sphere;
