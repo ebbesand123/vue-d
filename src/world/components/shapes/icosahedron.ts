@@ -11,6 +11,7 @@ export function createIcosahedron(
   const geometry = new IcosahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
   const icosahedron = new UpdatableObject(geometry, material);
+  icosahedron.name = "icosahedron";
   icosahedron.position.set(x, y, z);
 
   return icosahedron;

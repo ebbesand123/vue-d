@@ -11,6 +11,7 @@ export function createDodecahedron(
   const geometry = new DodecahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial({ color: 0xe3f3f3 });
   const dodecahedron = new UpdatableObject(geometry, material);
+  dodecahedron.name = "dodecahedron";
   dodecahedron.position.set(x, y, z);
 
   return dodecahedron;

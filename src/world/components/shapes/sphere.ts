@@ -15,6 +15,7 @@ export function createSphere(
   );
   const material = new MeshStandardMaterial();
   const sphere = new UpdatableObject(geometry, material);
+  sphere.name = "sphere";
   sphere.position.set(x, y, z);
 
   return sphere;

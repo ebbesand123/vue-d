@@ -11,6 +11,7 @@ export function createOctahedron(
   const geometry = new OctahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
   const octahedron = new UpdatableObject(geometry, material);
+  octahedron.name = "octahedron";
   octahedron.position.set(x, y, z);
 
   return octahedron;

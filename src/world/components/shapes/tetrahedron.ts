@@ -11,6 +11,7 @@ export function createTetrahedron(
   const geometry = new TetrahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
   const tetrahedron = new UpdatableObject(geometry, material);
+  tetrahedron.name = "tetrahedron";
   tetrahedron.position.set(x, y, z);
 
   return tetrahedron;
