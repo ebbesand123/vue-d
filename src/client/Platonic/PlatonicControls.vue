@@ -1,15 +1,16 @@
 <template>
   <div class="controls">
     <h2>Controls</h2>
+    <div v-for="(obj, index) in fetchedObjs" :key="index">
+      uuid: {{ obj.uuid }} name: {{ obj.name }}
+    </div>
     <n-space vertical justify="center">
-      <n-button-group horizontal>
-        <n-button type="primary" @click="onAnimate('start')"
-          >Start Animation</n-button
-        >
-        <n-button type="tertiary" @click="onAnimate('stop')"
-          >Stop Animation</n-button
-        >
-      </n-button-group>
+      <n-button type="primary" @click="onAnimate('start')"
+        >Start Animation</n-button
+      >
+      <n-button type="tertiary" @click="onAnimate('stop')"
+        >Stop Animation</n-button
+      >
       Shape
       <n-select
         v-model:value="options.shape"
@@ -49,28 +50,20 @@
         :max="10"
         @update:value="emit('optionsUpdated', options)"
       />
+      <n-button @click="world.disposeShapes()">disposeShapes</n-button>
+      <n-button @click="onDefault()">Default Shapes</n-button>
+      <div>Stored objects: {{ world.shapeObjects }}</div>
+      <div>Fetched objects: {{ fetchedObjs }}</div>
     </n-space>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, type Ref } from "vue";
-import { NButton, NButtonGroup, NSlider, NSpace, NSelect } from "naive-ui";
+import { NButton, NSlider, NSpace, NSelect } from "naive-ui";
 import type { ShapeOptions } from "@world/global/interfaces";
-const colors = [
-  { label: "white", value: "white" },
-  { label: "red", value: "red" },
-  { label: "yellow", value: "yellow" },
-  { label: "blue", value: "blue" },
-  { label: "green", value: "green" },
-  { label: "black", value: "black" },
-];
-const shapes = [
-  { label: "tetrahedron", value: "tetrahedron" },
-  { label: "cube", value: "cube" },
-  { label: "octahedron", value: "octahedron" },
-  { label: "dodecahedron", value: "dodecahedron" },
-  { label: "icosahedron", value: "icosahedron" },
-];
+import { shapes, colors } from "@client/mocks/globals";
+import { useWorldStore } from "@client/Stores/world";
+import { UpdatableObject } from "@world/global/classes";
 
 const options: Ref<ShapeOptions> = ref({
   shape: "cube",
@@ -82,12 +75,17 @@ const options: Ref<ShapeOptions> = ref({
 const emit = defineEmits<{
   (e: "optionsUpdated", props: ShapeOptions): void;
 }>();
-
-const onAnimate = function (name: string) {
-  if (name === ("start" || "stop")) return;
-  // emitted globally on client window object
+const world = useWorldStore();
+const fetchedObjs: Ref<UpdatableObject[]> = ref([]);
+function onDefault() {
+  /** fetch default objects, store them locally and update store */
+  fetchedObjs.value = world.getDefaultShapes();
+  console.log(fetchedObjs.value);
+  world.shapeObjects = fetchedObjs.value;
+}
+function onAnimate(name: string) {
   window.dispatchEvent(new Event(name));
-};
+}
 </script>
 <style scoped>
 .controls {
