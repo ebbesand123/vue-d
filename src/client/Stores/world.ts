@@ -6,9 +6,7 @@ import { generateDefaultShapes } from "@world/helpers/defaults";
 export const useWorldStore = defineStore("world", () => {
   const loading = ref(true);
   const shapeObjects: Ref<UpdatableObject[]> = ref([]);
-  function getShapes() {
-    return shapeObjects;
-  }
+
   function addShapes(shapes: []): void {
     window.dispatchEvent(new Event("worldShapesAdded"));
     shapes.forEach((shape) => {
@@ -27,7 +25,6 @@ export const useWorldStore = defineStore("world", () => {
   return {
     addShapes,
     disposeShapes,
-    getShapes,
     loading,
     getDefaultShapes,
     shapeObjects,

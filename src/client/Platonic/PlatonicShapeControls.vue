@@ -1,9 +1,10 @@
 <template>
-  <div v-if="isLoading">
+  <h2>Shape Controls</h2>
+  <div v-if="isLoading" class="shapeControls">
     <div v-for="(shape, index) in props.shapes" :key="props.shapes[index].name">
-      <h2>
-        <span>Shape name: {{ shape.name }}</span>
-      </h2>
+      <h3>
+        <span>[{{ index }}] Shape name: {{ shape.name }}</span>
+      </h3>
       <span>Shape Position X: {{ shape.position.x }}</span>
       <n-slider
         v-model:value="shape.position.x"
@@ -11,7 +12,6 @@
         :step="0.1"
         :min="-20"
         :max="20"
-        @update:value="emit('optionsUpdated', 'x')"
       />
       Position Y: {{ shape.position.y }}
       <n-slider
@@ -20,7 +20,6 @@
         :step="0.1"
         :min="-20"
         :max="20"
-        @update:value="emit('optionsUpdated', 'y')"
       />
       Position Z: {{ shape.position.z }}
       <n-slider
@@ -29,21 +28,25 @@
         :step="0.1"
         :min="-20"
         :max="20"
-        @update:value="emit('optionsUpdated', 'z')"
       />
+      <n-button class="button"> Delete Shape </n-button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { NSlider } from "naive-ui";
+import { NButton, NSlider } from "naive-ui";
 import { UpdatableObject } from "@world/global/classes";
 const props = defineProps<{
   shapes: UpdatableObject[];
 }>();
-const emit = defineEmits<{
-  (e: "optionsUpdated", property: string): void;
-}>();
 const isLoading = ref(true);
 // set reactive object with props as start properties
 </script>
+<style scoped>
+.shapeControls {
+  position: relative;
+  max-height: 400px;
+  overflow-y: auto;
+}
+</style>

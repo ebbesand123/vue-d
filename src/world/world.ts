@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
+import { Scene, WebGLRenderer } from "three";
 import { createCamera } from "@world/components/camera";
 import {
   createDirectionalLight,
@@ -12,21 +12,7 @@ import { Resizer } from "@world/systems/Resizer";
 import { UpdatableCamera, UpdatableObject } from "@world/global/classes";
 import { createGridHelper } from "@world/global/helpers";
 
-interface IWorld {
-  container: HTMLElement;
-  camera: PerspectiveCamera | UpdatableCamera;
-  scene: Scene;
-  renderer: WebGLRenderer;
-  resizer: Resizer;
-  // light: AmbientLight;
-  addShapes(shapes: UpdatableObject[]): void;
-  render(): void;
-  destroy(): void;
-  start(): void;
-  stop(): void;
-}
-
-class World implements IWorld {
+class World {
   camera: UpdatableCamera;
   scene: Scene;
   renderer: WebGLRenderer;
