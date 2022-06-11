@@ -1,7 +1,10 @@
 <template>
   <h2>Shape Controls</h2>
   <div v-if="isLoading" class="shapeControls">
-    <div v-for="(shape, index) in props.shapes" :key="props.shapes[index].name">
+    <div
+      v-for="(shape, index) in refProps.shapes"
+      :key="refProps.shapes[index].uuid"
+    >
       <h3>
         <span>[{{ index }}] Shape name: {{ shape.name }}</span>
       </h3>
@@ -29,7 +32,9 @@
         :min="-20"
         :max="20"
       />
-      <n-button class="button"> Delete Shape </n-button>
+      <n-button class="button" @click="onDelete(index)">
+        Delete Shape
+      </n-button>
     </div>
   </div>
 </template>
@@ -40,8 +45,12 @@ import { UpdatableObject } from "@world/global/classes";
 const props = defineProps<{
   shapes: UpdatableObject[];
 }>();
+const refProps = ref(props);
 const isLoading = ref(true);
-// set reactive object with props as start properties
+function onDelete(index: number) {
+  refProps.value.shapes[index].removeFromParent();
+  refProps.value.shapes.splice(index, 1);
+}
 </script>
 <style scoped>
 .shapeControls {
