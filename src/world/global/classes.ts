@@ -4,7 +4,7 @@ import { DirectionalLight, Mesh, PerspectiveCamera } from "three";
  * https://de.wikipedia.org/wiki/Radiant_(Einheit)
  */
 class UpdatableCamera extends PerspectiveCamera {
-  pauseAnimation = false;
+  pauseAnimation = true;
   radiansPerSecond = Math.PI / 4; // Eine Achteldrehung pro Sekunde. 1 Umdrehung = 2 Pi = 360°
   angle = 0;
   radius = 20;
