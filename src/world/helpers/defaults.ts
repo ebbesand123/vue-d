@@ -3,7 +3,6 @@ import { createDodecahedron } from "@world/components/shapes/dodecahedron";
 import { createIcosahedron } from "@world/components/shapes/icosahedron";
 import { createOctahedron } from "@world/components/shapes/octahedron";
 import { createTetrahedron } from "@world/components/shapes/tetrahedron";
-import { UpdatableObject } from "@world/global/classes";
 
 function generateDefaultShapes() {
   const shapes = [];
