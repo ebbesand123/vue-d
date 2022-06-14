@@ -1,6 +1,6 @@
 import { OctahedronBufferGeometry, MeshStandardMaterial } from "three";
 import type { Polyhedron, Position } from "@world/global/interfaces";
-import { TMesh } from "@world/global/classes";
+import { UpdatableObject } from "@world/global/classes";
 
 export function createOctahedron(
   properties: Polyhedron = { radius: 1, detail: 0 },
@@ -10,7 +10,8 @@ export function createOctahedron(
   const { x, y, z } = position;
   const geometry = new OctahedronBufferGeometry(radius, detail);
   const material = new MeshStandardMaterial();
-  const octahedron = new TMesh(geometry, material);
+  const octahedron = new UpdatableObject(geometry, material);
+  octahedron.name = "octahedron";
   octahedron.position.set(x, y, z);
 
   return octahedron;

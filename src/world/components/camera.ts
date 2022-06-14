@@ -1,5 +1,5 @@
-import { PerspectiveCamera } from "three";
 import type { Perspective, Position } from "@world/global/interfaces";
+import { UpdatableCamera } from "@world/global/classes";
 
 export function createCamera(
   container: HTMLElement,
@@ -11,7 +11,7 @@ export function createCamera(
   const { far, fov, near } = perspective;
   let { aspect } = perspective;
   aspect = clientWidth / clientHeight;
-  const camera = new PerspectiveCamera(fov, aspect, far, near);
+  const camera = new UpdatableCamera(fov, aspect, far, near);
 
   camera.position.set(x, y, z);
 

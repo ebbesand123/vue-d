@@ -11,9 +11,7 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "dev": "vite",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
-    "docs:build": "vuepress build docs"
+    "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
@@ -30,15 +28,14 @@
     "@types/node": "^16.11.36",
     "@types/three": "^0.140.0",
     "@types/webfontloader": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "@vitejs/plugin-vue": "^2.x.x",
     "@vue/cli-plugin-eslint": "~5.0.x",
     "@vue/eslint-config-prettier": "^7.x.x",
     "@vue/eslint-config-typescript": "^10.x.x",
     "@vue/test-utils": "^2.x.x",
     "@vue/tsconfig": "^0.1.x",
-    "@vuepress/client": "^2.0.0-beta.46",
     "c8": "^7.11.3",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
@@ -50,7 +47,6 @@
     "vfonts": "^0.0.3",
     "vite": "^2.9.x",
     "vitest": "^0.13.x",
-    "vue-tsc": "0.35.x",
-    "vuepress": "^2.0.0-beta.46"
+    "vue-tsc": "0.35.x"
   }
 }

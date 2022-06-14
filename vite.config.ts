@@ -5,6 +5,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  build: { chunkSizeWarningLimit: 1000 },
   test: {
     globals: true,
     environment: "jsdom",
@@ -15,7 +16,7 @@ export default defineConfig({
         "**/.cache",
         "**/.temp",
         "**/node_modules",
-        "dist",
+        "**/dist/**",
         "public",
         "coverage/**",
         "**/Router/*",
