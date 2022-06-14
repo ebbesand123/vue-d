@@ -1,6 +1,6 @@
 <template>
   <h2>Shape Controls</h2>
-  <div v-if="isLoading" class="shape-controls">
+  <div class="shape-controls">
     <n-space vertical>
       <n-select
         v-model:value="selectedShape.uuid"
@@ -81,13 +81,13 @@ const props = defineProps<{
   shapes: UpdatableObject[];
 }>();
 const refProps = ref(props);
-const isLoading = ref(true);
 const selectedShape = ref({
   uuid: "",
 });
 function onDelete(index: number) {
   refProps.value.shapes[index].removeFromParent();
   refProps.value.shapes.splice(index, 1);
+  selectedShape.value.uuid = "Deleted!";
 }
 function updateColor(object: UpdatableObject, color: string) {
   const colorRepresentation = new Color(color);

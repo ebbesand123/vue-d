@@ -8,7 +8,9 @@
         >Add Default Shapes</n-button
       >
     </n-space>
-    <platonic-shape-controls :shapes="[]"></platonic-shape-controls>
+    <platonic-shape-controls
+      :shapes="useWorld.shapes"
+    ></platonic-shape-controls>
   </div>
 </template>
 <script setup lang="ts">

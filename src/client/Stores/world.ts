@@ -1,11 +1,18 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, type Ref } from "vue";
 import { World } from "@world/world";
 import { generateDefaultShapes } from "@world/helpers/defaults";
+import { UpdatableObject } from "@world/global/classes";
 
 export const useWorldStore = defineStore("world", () => {
-  let currentWorld: World | null = null;
+  let currentWorld: World;
   const worldSpawned = ref(false);
+  const shapes: Ref<UpdatableObject[]> = ref([]);
+  const defaultShapesAdded = ref(false);
+
+  function getWorld() {
+    return currentWorld;
+  }
 
   function setWorld(world: World) {
     currentWorld = world;
@@ -21,14 +28,20 @@ export const useWorldStore = defineStore("world", () => {
   }
 
   function addDefaultShapes() {
-    const shapes = generateDefaultShapes();
-    currentWorld?.addShapes(shapes);
+    if (defaultShapesAdded.value) return;
+    const newShapes = generateDefaultShapes();
+    newShapes.forEach((shape) => {
+      shapes.value.push(shape);
+    });
+    currentWorld?.addShapes(newShapes);
+    defaultShapesAdded.value = true;
   }
 
   return {
     addDefaultShapes,
-    currentWorld,
+    getWorld,
     setWorld,
+    shapes,
     startWorld,
     stopWorld,
     worldSpawned,
