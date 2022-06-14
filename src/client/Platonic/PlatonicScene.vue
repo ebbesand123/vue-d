@@ -16,6 +16,7 @@ onMounted(() => {
   world = new World(container);
   useWorld.setWorld(world);
   useWorld.startWorld();
+  useWorld.addDefaultShapes();
 });
 
 onBeforeUnmount(() => {

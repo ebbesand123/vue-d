@@ -10,10 +10,7 @@
         size="large"
       ></n-select>
     </n-space>
-    <div
-      v-for="(shape, index) in refProps.shapes"
-      :key="refProps.shapes[index].uuid"
-    >
+    <div v-for="(shape, index) in refProps.shapes" :key="shape.uuid">
       <n-space
         v-if="shape.uuid === selectedShape.uuid"
         class="options"

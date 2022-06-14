@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: "/",
       name: "platonic",
-      component: () => import("@client/Platonic/PlatonicView.vue"),
+      component: () => import("@client/views/PlatonicView.vue"),
     },
     {
       path: "/see",

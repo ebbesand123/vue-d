@@ -40,7 +40,7 @@ class World {
 
     // Add visual helpers
     const lighthelper = createDirectionalLightHelper(light, 1);
-    this.scene.add(createGridHelper());
+    this.scene.add(createGridHelper(40, 40));
     this.scene.add(lighthelper);
 
     // render
