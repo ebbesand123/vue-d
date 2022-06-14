@@ -68,12 +68,6 @@ class World {
   }
 
   destroy(): void {
-    window.removeEventListener("start", () => {
-      this.start();
-    });
-    window.removeEventListener("stop", () => {
-      this.stop();
-    });
     this.renderer.dispose();
   }
 

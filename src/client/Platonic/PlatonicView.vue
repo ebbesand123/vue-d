@@ -9,9 +9,7 @@
       <platonic-scene />
     </n-grid-item>
     <n-grid-item :span="4">
-      <platonic-controls
-        @options-updated="(value) => (changes = value)"
-      ></platonic-controls>
+      <platonic-controls></platonic-controls>
     </n-grid-item>
   </n-grid>
 </template>
