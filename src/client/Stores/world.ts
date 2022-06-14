@@ -6,10 +6,6 @@ import { generateDefaultShapes } from "@world/helpers/defaults";
 export const useWorldStore = defineStore("world", () => {
   let currentWorld: World | null = null;
   const worldSpawned = ref(false);
-  function getWorld(targetContainer: HTMLElement): World {
-    const world = new World(targetContainer);
-    return world;
-  }
 
   function setWorld(world: World) {
     currentWorld = world;
@@ -31,7 +27,6 @@ export const useWorldStore = defineStore("world", () => {
 
   return {
     addDefaultShapes,
-    getWorld,
     currentWorld,
     setWorld,
     startWorld,
