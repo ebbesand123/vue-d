@@ -3,7 +3,7 @@
 ![vue-d](https://media.giphy.com/media/mIPNzL5YoMSlVs4ieI/giphy.gif)
 
 ## [Vue 3](https://vuejs.org/) + [Three.js](https://threejs.org/) + [Pinia](https://pinia.vuejs.org/) + [Naive UI](https://www.naiveui.com/en-US/os-theme)
-vue-d is a vue application which shows a 3D scene which can be controlled. 
+vue-d is a vue application which shows a controllable 3D scene. 
 It is heavily inspired by [this guide](https://discoverthreejs.com/book/) and thus the application also implements a world class which is used in vue.
 
 The project consists of 3 main parts:
