@@ -4,29 +4,32 @@
 
 ## [Vue 3](https://vuejs.org/) + [Three.js](https://threejs.org/) + [Pinia](https://pinia.vuejs.org/) + [Naive UI](https://www.naiveui.com/en-US/os-theme)
 
-vue-d is a client application which shows a controllable 3D scene.
+`vue-d` is a client application which shows a controllable 3D scene.
 It is heavily inspired by ['Discover Three.js'](https://discoverthreejs.com/book/).
-
-The project is basically always WIP, so check back on any updates if you are interested.
 
 The project consists of 3 main parts:
 
-- `src/client`: Vue application
-  - single file components
-  - script setup
+- `src/client`: Vue 3 application
+  - Single file component format. (SFC)
+  - Script setup with TypeScript `<script setup lang="ts">`
+  - State management with Pinia
+  - Naive UI for UI components
 - `src/world`: World class which implements `Three.js` functionality
 - `src/server`: Simple server
 
 ## Commands
 
-- `npm run build` build client
-- `npm run serve` serve local build
-- `npm run dev` run client dev server
-- `npm run test:unit` run unit tests
-- `npm run test:coverage` show test coverage
-- `npm run lint` run linter with auto fix
-- `npm run format` prettier code
-- `npm run typecheck` check typing
+```sh
+> npm run build          # build client
+> npm run serve          # serve local build
+> npm run dev            # run client dev server
+> npm run test:unit      # run unit tests
+> npm run test:coverage  # show test coverage
+> npm run lint run       # linter with auto fix
+> npm run format         # prettier code
+> npm run typecheck      # check typing
+
+```
 
 ## Local development
 
@@ -63,3 +66,12 @@ Add following options to your VSCode `settings.json` to enable on save formattin
   }
 }
 ```
+
+### Backlog
+
+- [x] Render scene with platonic shapes
+- [x] Basic scene, camera and shape controls
+- [ ] Light controls
+- [ ] Save and import scene
+- [ ] Add shapes UI
+- [ ] Add missing tests
