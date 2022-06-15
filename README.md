@@ -67,7 +67,7 @@ Add following options to your VSCode `settings.json` to enable on save formattin
 }
 ```
 
-### Backlog
+## Backlog
 
 - [x] Render scene with platonic shapes
 - [x] Basic scene, camera and shape controls
