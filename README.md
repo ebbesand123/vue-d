@@ -2,6 +2,8 @@
 
 ![vue-d](https://media.giphy.com/media/mIPNzL5YoMSlVs4ieI/giphy.gif)
 
+Beta build showcase: [ebbesand123.github.io](https://ebbesand123.github.io/)
+
 ## [Vue 3](https://vuejs.org/) + [Three.js](https://threejs.org/) + [Pinia](https://pinia.vuejs.org/) + [Naive UI](https://www.naiveui.com/en-US/os-theme)
 
 `vue-d` is a client application which shows a controllable 3D scene.
@@ -75,3 +77,4 @@ Add following options to your VSCode `settings.json` to enable on save formattin
 - [ ] Save and import scene
 - [ ] Add shapes UI
 - [ ] Add missing tests
+- [ ] optimize mobile UX
