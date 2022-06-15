@@ -1,6 +1,6 @@
 {
   "name": "vue-d",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "serve": "vite preview",
     "prebuild": "eslint --fix src && prettier . --write && vue-tsc --noEmit -p tsconfig.vitest.json --composite false && vitest run --coverage",
