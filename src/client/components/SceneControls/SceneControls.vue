@@ -1,9 +1,8 @@
 <template>
-  <div class="scene-controls">
-    <h2>Scene Controls</h2>
+  <div>
+    <h3>Scene background</h3>
     <div v-for="scn in refScene.scene" :key="scn.uuid">
       <n-space vertical>
-        <h3>Background color</h3>
         <n-color-picker
           :value="getColor(scn)"
           :default-value="getColor(scn)"
@@ -37,11 +36,3 @@ function getColor(scene: Scene) {
   }
 }
 </script>
-<style scoped>
-.scene-controls {
-  position: relative;
-  max-height: 400px;
-  overflow-y: auto;
-  display: block;
-}
-</style>

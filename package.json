@@ -15,9 +15,12 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@vueuse/core": "^8.7.4",
+    "naive-ui": "^2.29.0",
     "pinia": "^2.0.14",
     "roboto-fontface": "*",
     "three": "^0.141.x",
+    "vfonts": "^0.0.3",
     "vue": "3.2.36",
     "vue-router": "^4.0.14",
     "webfontloader": "1.x.x"
@@ -41,10 +44,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^8.7.1",
     "jsdom": "^19.0.0",
-    "naive-ui": "^2.29.0",
     "prettier": "2.6.2",
     "typescript": "~4.6.3",
-    "vfonts": "^0.0.3",
     "vite": "^2.9.x",
     "vitest": "^0.13.x",
     "vue-tsc": "0.35.x"

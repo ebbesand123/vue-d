@@ -73,8 +73,9 @@ Add following options to your VSCode `settings.json` to enable on save formattin
 
 - [x] Render scene with platonic shapes
 - [x] Basic scene, camera and shape controls
-- [ ] Light controls
+- [x] optimize mobile UX
 - [ ] Save and import scene
+- [ ] Light controls
 - [ ] Add shapes UI
 - [ ] Add missing tests
-- [ ] optimize mobile UX
+- [ ] Internationalization

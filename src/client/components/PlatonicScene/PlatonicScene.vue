@@ -1,14 +1,23 @@
 <template>
-  <div id="canvas"></div>
+  <div
+    id="canvas"
+    :style="{
+      width: props.width + 'px',
+      height: props.height + 'px',
+    }"
+  ></div>
 </template>
 <script setup lang="ts">
 import { World } from "@world/world";
 import { onBeforeUnmount, onMounted } from "vue";
-import { useWorldStore } from "@client/Stores/world";
-const useWorld = useWorldStore();
-
+import { useWorldStore } from "@client/stores/world";
+const props = defineProps<{
+  height: number;
+  width: number;
+}>();
 let world: World;
 let container: HTMLElement | null;
+const useWorld = useWorldStore();
 
 onMounted(() => {
   container = document.getElementById("canvas");
@@ -23,9 +32,3 @@ onBeforeUnmount(() => {
   world.destroy();
 });
 </script>
-<style>
-#canvas {
-  width: 100%;
-  height: 100%;
-}
-</style>

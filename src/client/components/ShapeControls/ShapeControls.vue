@@ -1,6 +1,6 @@
 <template>
-  <h2>Shape Controls</h2>
-  <div class="shape-controls">
+  <div>
+    <h3>Shape Controls</h3>
     <n-space vertical>
       <n-select
         v-model:value="selectedShape.uuid"
@@ -55,7 +55,12 @@
           "
         >
         </n-color-picker>
-        <n-button color="red" class="button" @click="onDelete(index)">
+        <n-button
+          class="button"
+          secondary
+          color="#D60505"
+          @click="onDelete(index)"
+        >
           Delete Shape
         </n-button>
       </n-space>
@@ -92,16 +97,7 @@ function updateColor(object: UpdatableObject, color: string) {
 }
 </script>
 <style scoped>
-.shape-controls {
-  position: relative;
-  max-height: 400px;
-  overflow-y: auto;
-  display: block;
-}
-.options {
-  margin-top: 16px;
-}
 .button {
-  margin-top: 16px;
+  width: 100%;
 }
 </style>
