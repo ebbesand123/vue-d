@@ -1,29 +1,32 @@
 <template>
-  <div class="camera-controls">
-    <h2>Camera controls</h2>
+  <div>
+    <h3>Camera controls</h3>
     <div v-for="(cam, i) in refProps.camera" :key="cam.uuid">
       <n-space class="options" vertical>
-        <span>Camera Position X: {{ cam.position.x }}</span>
+        <span>Position X: {{ cam.position.x }}</span>
         <n-slider
           v-model:value="cam.position.x"
+          :tooltip="false"
           :default-value="props.camera[i].position.x"
           :step="0.1"
           :min="-50"
           :max="50"
           @update:value="cam.lookAt(0, 0, 0)"
         />
-        Camera Position Y: {{ cam.position.y }}
+        Position Y: {{ cam.position.y }}
         <n-slider
           v-model:value="cam.position.y"
+          :tooltip="false"
           :default-value="props.camera[i].position.y"
           :step="0.1"
           :min="-50"
           :max="50"
           @update:value="cam.lookAt(0, 0, 0)"
         />
-        Camera Position Z: {{ cam.position.z }}
+        Position Z: {{ cam.position.z }}
         <n-slider
           v-model:value="cam.position.z"
+          :tooltip="false"
           :default-value="props.camera[i].position.z"
           :step="0.1"
           :min="-50"
@@ -31,7 +34,13 @@
           @update:value="cam.lookAt(0, 0, 0)"
         />
       </n-space>
-      <n-button @click="onResetCamera(cam)">Reset Camera</n-button>
+      <n-button
+        class="button"
+        secondary
+        color="#D60505"
+        @click="onResetCamera(cam)"
+        >Reset Camera</n-button
+      >
     </div>
   </div>
 </template>
@@ -51,9 +60,7 @@ function onResetCamera(cam: UpdatableCamera) {
 }
 </script>
 <style scoped>
-.camera-controls {
-  text-align: center;
-  max-height: 100vh;
-  overflow-y: auto;
+.button {
+  width: 100%;
 }
 </style>
