@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { World } from "@world/world";
 import { onBeforeUnmount, onMounted } from "vue";
-import { useWorldStore } from "@client/Stores/world";
+import { useWorldStore } from "@client/stores/world";
 const props = defineProps<{
   height: number;
   width: number;

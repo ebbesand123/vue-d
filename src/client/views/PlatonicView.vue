@@ -42,7 +42,7 @@ import PlatonicScene from "@client/components/PlatonicScene/PlatonicScene.vue";
 import ShapeControls from "@client/components/ShapeControls/ShapeControls.vue";
 import RenderControls from "@client/components/RenderControls/RenderControls.vue";
 import SceneControls from "@client/components/SceneControls/SceneControls.vue";
-import { useWorldStore } from "@client/Stores/world";
+import { useWorldStore } from "@client/stores/world";
 
 const menuPlacement: Ref<DrawerPlacement> = ref("bottom");
 const menuActive = ref(false);

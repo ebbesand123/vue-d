@@ -21,7 +21,7 @@
 </template>
 <script setup lang="ts">
 import { NButton, NSpace } from "naive-ui";
-import { useWorldStore } from "@client/Stores/world";
+import { useWorldStore } from "@client/stores/world";
 const useWorld = useWorldStore();
 function onStart() {
   useWorld.startWorld();
