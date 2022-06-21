@@ -28,7 +28,11 @@ export const useWorldStore = defineStore("world", () => {
     currentWorld = world;
     camera.value.push(currentWorld.camera);
     scene.value.push(currentWorld.scene);
-    light.value.push(currentWorld.light);
+    currentWorld.scene.children.forEach((child) => {
+      if (child instanceof UpdatableDirectionalLight) {
+        light.value.push(child);
+      }
+    });
   }
 
   function startWorld() {

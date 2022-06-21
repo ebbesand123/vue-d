@@ -31,29 +31,17 @@
           :max="50"
         />
       </n-space>
-      <n-button
-        class="button"
-        secondary
-        color="#D60505"
-        @click="onResetLight(lgt, i)"
-        >Reset Light</n-button
-      >
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { NButton, NSpace, NSlider } from "naive-ui";
+import { NSpace, NSlider } from "naive-ui";
 import { UpdatableDirectionalLight } from "@world/global/classes";
 const props = defineProps<{
   light: UpdatableDirectionalLight[];
 }>();
 const refProps = ref(props);
-function onResetLight(light: UpdatableDirectionalLight, index: number) {
-  light.position.setX(props.light[index].position.x);
-  light.position.setY(props.light[index].position.y);
-  light.position.setZ(props.light[index].position.z);
-}
 </script>
 <style scoped>
 .button {

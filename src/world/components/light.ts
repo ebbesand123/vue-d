@@ -17,7 +17,7 @@ function createAmbientLight() {
 function createDirectionalLight(
   color: ColorRepresentation = "white",
   intensity = 8,
-  position: Position = { x: 0, y: -10, z: 10 }
+  position: Position = { x: 0, y: 5, z: 0 }
 ) {
   const { x, y, z } = position;
   const directionalLight = new UpdatableDirectionalLight(color, intensity);
