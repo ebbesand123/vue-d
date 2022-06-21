@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Shape Controls</h3>
-    <n-space vertical>
+    <n-space class="select-shape" vertical>
       <n-select
         v-model:value="selectedShape.uuid"
         :options="refProps.shapes"
@@ -99,5 +99,8 @@ function updateColor(object: UpdatableObject, color: string) {
 <style scoped>
 .button {
   width: 100%;
+}
+.select-shape {
+  margin-bottom: 16px;
 }
 </style>
