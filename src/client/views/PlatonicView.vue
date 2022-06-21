@@ -15,17 +15,17 @@
       :close-on-esc="true"
     >
       <n-drawer-content title="Menu" class="menu-content" :closable="true">
-        <camera-controls :camera="useWorld.camera"></camera-controls>
-        <scene-controls :scene="useWorld.scene"></scene-controls>
-        <render-controls></render-controls>
-        <shape-controls
-          :shapes="useWorld.shapes"
-        ></shape-controls> </n-drawer-content
-    ></n-drawer>
+        <render-controls />
+        <camera-controls :camera="useWorld.camera" />
+        <scene-controls :scene="useWorld.scene" />
+        <light-controls :light="useWorld.light" />
+        <shape-controls :shapes="useWorld.shapes" />
+      </n-drawer-content>
+    </n-drawer>
   </div>
 </template>
 <script setup lang="ts">
-import { onUpdated, ref, type Ref } from "vue";
+import { onMounted, onUpdated, ref, type Ref } from "vue";
 import {
   useWindowSize,
   useBreakpoints,
@@ -42,6 +42,7 @@ import PlatonicScene from "@client/components/PlatonicScene/PlatonicScene.vue";
 import ShapeControls from "@client/components/ShapeControls/ShapeControls.vue";
 import RenderControls from "@client/components/RenderControls/RenderControls.vue";
 import SceneControls from "@client/components/SceneControls/SceneControls.vue";
+import LightControls from "@client/components/LightControls/LightControls.vue";
 import { useWorldStore } from "@client/stores/world";
 
 const menuPlacement: Ref<DrawerPlacement> = ref("bottom");
@@ -53,11 +54,17 @@ const useWorld = useWorldStore();
 const { width, height } = useWindowSize();
 const breakpoints = useBreakpoints(breakpointsTailwind);
 
-onUpdated(() => {
-  breakpoints.isGreater("sm")
-    ? (menuPlacement.value = "left")
-    : (menuPlacement.value = "bottom");
+onMounted(() => {
+  menuPlacement.value = updateMenuPlacement();
 });
+
+onUpdated(() => {
+  menuPlacement.value = updateMenuPlacement();
+});
+
+function updateMenuPlacement() {
+  return breakpoints.isGreater("sm") ? "left" : "bottom";
+}
 </script>
 <style scoped>
 .flex {

@@ -2,7 +2,11 @@ import { defineStore } from "pinia";
 import { ref, type Ref } from "vue";
 import { World } from "@world/world";
 import { generateDefaultShapes } from "@world/helpers/defaults";
-import { UpdatableCamera, UpdatableObject } from "@world/global/classes";
+import {
+  UpdatableCamera,
+  UpdatableDirectionalLight,
+  UpdatableObject,
+} from "@world/global/classes";
 import { Scene } from "three";
 
 export const useWorldStore = defineStore("world", () => {
@@ -11,6 +15,7 @@ export const useWorldStore = defineStore("world", () => {
   const shapes: Ref<UpdatableObject[]> = ref([]);
   const camera: Ref<UpdatableCamera[]> = ref([]);
   const scene: Ref<Scene[]> = ref([]);
+  const light: Ref<UpdatableDirectionalLight[]> = ref([]);
   function getScene() {
     return scene.value;
   }
@@ -23,6 +28,7 @@ export const useWorldStore = defineStore("world", () => {
     currentWorld = world;
     camera.value.push(currentWorld.camera);
     scene.value.push(currentWorld.scene);
+    light.value.push(currentWorld.light);
   }
 
   function startWorld() {
@@ -49,6 +55,7 @@ export const useWorldStore = defineStore("world", () => {
     getScene,
     getWorld,
     isRendering,
+    light,
     scene,
     setWorld,
     shapes,
