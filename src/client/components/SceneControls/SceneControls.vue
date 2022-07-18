@@ -14,6 +14,8 @@
             }
           "
         ></n-color-picker>
+        <n-button @click="onSave(scn)">Save Scene</n-button>
+        <n-button>Load Scene</n-button>
       </n-space>
     </div>
   </div>
@@ -34,5 +36,8 @@ function getColor(scene: Scene) {
   if (scene.background instanceof Color) {
     return "#" + scene.background.clone().getHexString().toUpperCase();
   }
+}
+function onSave(scene: Scene) {
+  console.log(scene.toJSON());
 }
 </script>
